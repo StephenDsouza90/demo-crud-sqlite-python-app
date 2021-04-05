@@ -17,15 +17,12 @@ class SQLBackend(object):
     def setup_session(self, connection_string=None):
         """ Setup the engine and session. If the engine is already setup, then return. """
 
-        # TODO : Mention what is an engine
         if self.engine:
             return
 
-        # TODO : Mention what does create_engine do
         self.engine = create_engine(connection_string, echo=False,
                                     pool_recycle=3600)
 
-        # The Session object is used as the interface to the database.
         self.Session.configure(bind=self.engine)
 
     def bootstrap(self):
@@ -46,6 +43,5 @@ class SQLBackend(object):
         if not connection:
             raise Exception("Couldn't connect to DB even after retries!")
 
-        # TODO : Mention what does create_all do
         Base.metadata.create_all(bind=self.engine)
         connection.close()

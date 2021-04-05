@@ -1,21 +1,20 @@
-from controller.core import BookAccountingSystem
+from controller.core import BookOrderingSystem
 from interface.interface import start_app
 
 
 def main():
-    print("Starting the prograg...")
+    print("Starting the program...")
 
-    connection_string = "sqlite:///book_accounting_system.db"
+    connection_string = "sqlite:///book_ordering_system.db"
 
     print(f"Connecting to DB: {connection_string}")
 
-    # set up of the engine, session and connection
-    bas = BookAccountingSystem(connection_string)
-    bas.bootstrap()
+    bos = BookOrderingSystem(connection_string)
+    bos.bootstrap()
 
     print("Connected.")
 
-    start_app(bas)
+    start_app(bos)
 
 
 if __name__ == '__main__':

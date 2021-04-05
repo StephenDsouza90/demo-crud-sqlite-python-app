@@ -5,12 +5,12 @@ from models.models import User, Book, Order
 from utils.decorator import handle_session
 
 
-class BookAccountingSystem(SQLBackend):
+class BookOrderingSystem(SQLBackend):
     """ BookAccountingSystem is responsible for transactions to the Database.
         It has commands such as ADD, GET, UPDATE and DELETE. """
 
     def __init__(self, connection_string):
-        super(BookAccountingSystem, self).__init__(connection_string)
+        super(BookOrderingSystem, self).__init__(connection_string)
 
     @handle_session
     def add_user(self, session, user_name):
@@ -18,6 +18,11 @@ class BookAccountingSystem(SQLBackend):
         session.add(user)
         session.commit()
         return user
+
+    @handle_session
+    def get_all_users(self, session):
+        users = session.query(User).all()
+        return users
 
     @handle_session
     def get_user(self, session, user_id):
