@@ -11,8 +11,9 @@ TBD
 
 To use a Postgres database, the following connection string can be used. It needs to be replaced with the SQLite connection string.
 
+```bash
 postgres_connection_string = "postgres+psycopg2://<user_name>:<user_password>@localhost:5432/<database_name>"
-
+```
 
 ## How to run locally
 ```bash
